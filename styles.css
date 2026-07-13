@@ -78,11 +78,4 @@ h1 {
   height: 50px;
 }
 
-#error-message {
-    color: red;
-    font-weight: bold;
-}
 
-.hidden {
-    display: none;
-}
