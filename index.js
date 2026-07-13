@@ -31,3 +31,19 @@ function displayAlerts(data) {
             `<p>${alert.properties.headline}</p>`;
     });
 }
+
+// Get the input field
+const stateInput = document.getElementById("state-input");
+
+// Get the fetch button
+const fetchButton = document.getElementById("fetch-alerts");
+
+// Run when button is clicked
+fetchButton.addEventListener("click", function () {
+    // Get state abbreviation entered by the user
+    const state = stateInput.value;
+    // Fetch weather alerts for the selected state
+    fetchWeatherAlerts(state);
+    // Clear input field after request starts
+    stateInput.value = "";
+});
