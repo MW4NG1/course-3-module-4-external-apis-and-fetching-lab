@@ -4,6 +4,7 @@ const weatherApi = "https://api.weather.gov/alerts/active?area="
 // Your code here!
 // Initial URL for the National Weather Service API
 const weatherApi = "https://api.weather.gov/alerts/active?area=";
+const errorMessage = document.getElementById("error-message");
 // Function to fetch weather alerts from the API
 async function fetchWeatherAlerts(state) {
   try {
@@ -11,6 +12,9 @@ async function fetchWeatherAlerts(state) {
     const response = await fetch(`${weatherApi}${state}`);
     // Convert the response into a JavaScript object
     const data = await response.json();
+    // Clear previous error messages
+    errorMessage.textContent = "";
+    errorMessage.classList.addEventListener("hidden");
     displayAlerts(data); // Log the returned data for testing
   } catch (error) {
     console.log(error); // Log any network or API errors
@@ -34,10 +38,8 @@ function displayAlerts(data) {
 
 // Get the input field
 const stateInput = document.getElementById("state-input");
-
 // Get the fetch button
 const fetchButton = document.getElementById("fetch-alerts");
-
 // Run when button is clicked
 fetchButton.addEventListener("click", function () {
     // Get state abbreviation entered by the user
@@ -47,3 +49,12 @@ fetchButton.addEventListener("click", function () {
     // Clear input field after request starts
     stateInput.value = "";
 });
+
+// Function to display an error message
+function displayError(message) {
+    // Show the error message
+    errorMessage.textContent = message;
+    // Make the error div visible
+    errorMessage.classList.remove("hidden");
+
+}
