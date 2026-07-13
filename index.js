@@ -11,7 +11,7 @@ async function fetchWeatherAlerts(state) {
     const response = await fetch(`${weatherApi}${state}`);
     // Convert the response into a JavaScript object
     const data = await response.json();
-    console.log(data); // Log the returned data for testing
+    displayAlerts(data); // Log the returned data for testing
   } catch (error) {
     console.log(error); // Log any network or API errors
   }
