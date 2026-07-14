@@ -2,8 +2,6 @@
 const weatherApi = "https://api.weather.gov/alerts/active?area="
 
 // Your code here!
-// Initial URL for the National Weather Service API
-const weatherApi = "https://api.weather.gov/alerts/active?area=";
 const errorMessage = document.getElementById("error-message");
 // Function to fetch weather alerts from the API
 async function fetchWeatherAlerts(state) {
@@ -14,10 +12,10 @@ async function fetchWeatherAlerts(state) {
     const data = await response.json();
     // Clear previous error messages
     errorMessage.textContent = "";
-    errorMessage.classList.addEventListener("hidden");
+    errorMessage.classList.add("hidden");
     displayAlerts(data); // Log the returned data for testing
   } catch (error) {
-    console.log(error); // Log any network or API errors
+    displayError(error.message); // Display weather alerts on the page
   }
 }
 
